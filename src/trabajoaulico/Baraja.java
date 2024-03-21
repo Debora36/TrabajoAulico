@@ -9,8 +9,8 @@ public class Baraja {
     private ArrayList<Carta> monton;
 
     public Baraja() {
-        mazo=new ArrayList();
-        monton=new ArrayList();
+        mazo = new ArrayList();
+        monton = new ArrayList();
         cargaCartas();
     }
 
@@ -26,42 +26,44 @@ public class Baraja {
     }
 
     public void barajar() { //Ezequiel
-        Random random = new Random();
-//        for (int i = mazo.length - 1; i > 0; i--) {//empezando del final hasta el inicio
-//            int posAleatoria = random.nextInt(i + 1);
-//            Carta temp = mazo[i];
-//            mazo[i] = mazo[posAleatoria];
-//            mazo[posAleatoria] = temp;
-//        }
+        int i = 0;
+        int random;
+        for (Carta carta : mazo) {
+            random = (int) (Math.random() * mazo.size());
+            Carta aux = mazo.get(random);
+            mazo.set(random, mazo.get(i));
+            mazo.set(i, aux);
+            i++;
+        }
     }
 //cambia de posición todas las cartas aleatoriamente.
 
     public void siguienteCarta() { //Debora
-        if(mazo.isEmpty()){
+        if (mazo.isEmpty()) {
             System.out.println("No quedan cartas en el mazo.");
-        }else{
-            System.out.println("Carta devuelta:"+mazo.get(mazo.size()-1).getNum()+" de "+mazo.get(mazo.size()-1).getPalo());
-            monton.add(mazo.get(mazo.size()-1));
-            mazo.remove(mazo.size()-1);
+        } else {
+            System.out.println("Carta devuelta:" + mazo.get(mazo.size() - 1).getNum() + " de " + mazo.get(mazo.size() - 1).getPalo());
+            monton.add(mazo.get(mazo.size() - 1));
+            mazo.remove(mazo.size() - 1);
         }
-    
+
     }
 //devuelve la siguiente carta que está en la baraja, cuando no haya más o se haya llegado al final, se indica al usuario que no hay más cartas.
 
     public int cartasDisponibles() { // Debora
-        System.out.println("El número de cartas que aún se pueden repartir es: "+mazo.size()); 
+        System.out.println("El número de cartas que aún se pueden repartir es: " + mazo.size());
         return mazo.size();
     }
 //indica el número de cartas que aún se puede repartir.
 
     public void darCartas(int n) { //Martin
-        
-        if(n > cartasDisponibles()){
-            System.out.println("No hay "+n+" cartas disponibles.");
-        }else{
+
+        if (n > cartasDisponibles()) {
+            System.out.println("No hay " + n + " cartas disponibles.");
+        } else {
             for (int i = 0; i < n; i++) {
                 siguienteCarta();
-            }            
+            }
         }
     }
 //dado un número de cartas que nos pidan, le devolveremos ese número de cartas. En caso de que haya menos cartas que las pedidas, no devolveremos nada, pero debemos indicárselo al usuario.
@@ -78,13 +80,13 @@ public class Baraja {
 
     public void mostrarBaraja() { //Federico
         System.out.println("La baraja actual es: ");
-        
-        if(!mazo.isEmpty()){
-        System.out.println(mazo);            
-        }else{
+
+        if (!mazo.isEmpty()) {
+            System.out.println(mazo);
+        } else {
             System.out.println("No quedan cartas en la baraja");
         }
-        
+
     }
 //muestra todas las cartas hasta el final. Es decir, mostrará las cartas que no se han sacado.
 
