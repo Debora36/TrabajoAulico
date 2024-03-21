@@ -60,9 +60,15 @@ public void barajar(){ //Ezequiel
 } 
 //cambia de posición todas las cartas aleatoriamente.
 
-public void siguienteCarta(){ //Debora
-    
-} 
+public void siguienteCarta() { //Debora
+        int tamaño = mazo.length;
+        if (tamaño != 0) {
+            System.out.println(mazo[tamaño].toString());
+
+        } else {
+            System.out.println("No hay más cartas en el mazo");
+        }
+    }
 //devuelve la siguiente carta que está en la baraja, cuando no haya más o se haya llegado al final, se indica al usuario que no hay más cartas.
 
 public void cartasDisponibles(){ // Debora
@@ -70,8 +76,12 @@ public void cartasDisponibles(){ // Debora
 } 
 //indica el número de cartas que aún se puede repartir.
 
-public void darCartas(){ //Martin
-    
+public void darCartas(int n){ //Martin
+    for (int i = 0; i < 40; i++) {
+        while(mazo[i]!=null && n>0){
+            System.out.println("");
+        }
+    }
 } 
 //dado un número de cartas que nos pidan, le devolveremos ese número de cartas. En caso de que haya menos cartas que las pedidas, no devolveremos nada, pero debemos indicárselo al usuario.
 
