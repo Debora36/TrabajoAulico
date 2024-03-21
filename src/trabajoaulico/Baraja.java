@@ -1,6 +1,7 @@
 package trabajoaulico;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Baraja {
 
@@ -27,7 +28,13 @@ public class Baraja {
     }
 
     public void barajar() { //Ezequiel
-
+        Random random = new Random();
+        for (int i = mazo.length - 1; i > 0; i--) {//empezando del final hasta el inicio
+            int posAleatoria = random.nextInt(i + 1);
+            Carta temp = mazo[i];
+            mazo[i] = mazo[posAleatoria];
+            mazo[posAleatoria] = temp;
+        }
     }
 //cambia de posición todas las cartas aleatoriamente.
 
